@@ -1,9 +1,9 @@
 from pymongo import MongoClient
-from config import LINKS
+from config import Config
 
 
 
-client = MongoClient(LINKS['LOCAL'])
+client = MongoClient(Config.LOCAL_URI)
 
 try:
     client.admin.command('ping')

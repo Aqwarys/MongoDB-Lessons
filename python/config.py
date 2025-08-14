@@ -1,14 +1,13 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 load_dotenv('../.env')
 
-username = os.getenv('MONGO_ROOT_USERNAME')
-password = os.getenv('MONGO_ROOT_PASSWORD')
-cluster = os.getenv('MONGO_URL')
 
-# Replace the uri string with your MongoDB deployment's connection string.
-LINKS = {
-    'REMOTE': f"mongodb+srv://{username}:{password}@{cluster}/?retryWrites=true&w=majority&appName=Cluster0",
-    'LOCAL': f"mongodb://{username}:{password}@localhost:27017/"
-}
+class Config:
+    MONGO_ROOT_USERNAME = os.getenv('MONGO_ROOT_USERNAME')
+    MONGO_ROOT_PASSWORD = os.getenv('MONGO_ROOT_PASSWORD')
+    MONGO_URL = os.getenv('MONGO_URL')
+
+    REMOTE_URI =  f"mongodb+srv://{MONGO_ROOT_USERNAME}:{MONGO_ROOT_PASSWORD}@{MONGO_URL}/?retryWrites=true&w=majority&appName=Cluster0"
+    LOCAL_URI = f"mongodb://{MONGO_ROOT_USERNAME}:{MONGO_ROOT_PASSWORD}@localhost:27017/"
