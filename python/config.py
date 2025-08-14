@@ -5,7 +5,7 @@ load_dotenv('../.env')
 
 username = os.getenv('MONGO_ROOT_USERNAME')
 password = os.getenv('MONGO_ROOT_PASSWORD')
-cluster = os.getenv('MONGO_CLUSTER')
+cluster = os.getenv('MONGO_URL')
 
 # Replace the uri string with your MongoDB deployment's connection string.
 LINKS = {
