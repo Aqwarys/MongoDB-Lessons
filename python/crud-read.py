@@ -1,19 +1,9 @@
 from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
-
-load_dotenv('../.env')
-
-username = os.getenv('MONGO_ROOT_USERNAME')
-password = os.getenv('MONGO_ROOT_PASSWORD')
-cluster = os.getenv('MONGO_CLUSTER')
+from config import LINKS
 
 
 
-# Replace the uri string with your MongoDB deployment's connection string.
-# uri = f"mongodb+srv://{username}:{password}@{cluster}/?retryWrites=true&w=majority&appName=Cluster0"
-url = f"mongodb://{username}:{password}@localhost:27017/"
-client = MongoClient(url)
+client = MongoClient(LINKS['LOCAL'])
 
 try:
     client.admin.command('ping')
