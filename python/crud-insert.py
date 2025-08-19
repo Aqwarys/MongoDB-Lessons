@@ -20,3 +20,5 @@ try:
 
 except Exception as e:
     print(e)
+
+client.close()
